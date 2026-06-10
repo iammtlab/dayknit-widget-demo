@@ -1,0 +1,73 @@
+name: Widget Render
+
+# 위젯 UI(RemoteViews)를 CI 에뮬레이터에서 실제 렌더 → 스크린샷 아티팩트.
+# Public repo 라 GitHub Actions 무료·무제한. Tauri/네이티브 없음 → 순수 Android APK(빠름).
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java (17, Temurin)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install SDK packages
+        run: |
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager "platforms;android-34" "build-tools;34.0.0"
+
+      - name: Install Gradle 8.7
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.7-bin.zip -O /tmp/gradle.zip
+          mkdir -p "$HOME/gradle" && unzip -q /tmp/gradle.zip -d "$HOME/gradle"
+          echo "$HOME/gradle/gradle-8.7/bin" >> "$GITHUB_PATH"
+
+      - name: Build debug APK
+        run: gradle assembleDebug --no-daemon --stacktrace
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Render widgets on emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          script: |
+            set -e
+            mkdir -p shots
+            APK=$(find app/build/outputs/apk/debug -name '*.apk' | head -1)
+            echo "APK=$APK"
+            adb install -r "$APK"
+            adb shell am start -n com.dayknit.widget/.WidgetGalleryActivity
+            sleep 8
+            adb exec-out screencap -p > shots/01-top.png
+            adb shell input swipe 540 1600 540 300 ; sleep 2
+            adb exec-out screencap -p > shots/02.png
+            adb shell input swipe 540 1600 540 300 ; sleep 2
+            adb exec-out screencap -p > shots/03.png
+            adb shell input swipe 540 1600 540 300 ; sleep 2
+            adb exec-out screencap -p > shots/04-bottom.png
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: widget-screenshots
+          path: shots/*.png
+          if-no-files-found: warn

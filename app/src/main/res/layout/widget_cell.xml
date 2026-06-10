@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 한 날짜 셀: 날짜 + 이벤트 칩 2개(+N). RemoteViews 지원 뷰만. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cell_root"
+    android:layout_width="match_parent"
+    android:layout_height="58dp"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <TextView android:id="@+id/cell_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:paddingStart="2dp" />
+
+    <TextView android:id="@+id/cell_ev1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="9sp"
+        android:paddingStart="3dp"
+        android:paddingEnd="2dp" />
+
+    <TextView android:id="@+id/cell_ev2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="9sp"
+        android:paddingStart="3dp"
+        android:paddingEnd="2dp" />
+</LinearLayout>

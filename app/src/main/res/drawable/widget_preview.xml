@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 위젯 추가 화면 미리보기 — 실제 스냅샷이 아니라 브랜드 색 카드(placeholder). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:startColor="#4772fa"
+        android:endColor="#6d4afa"
+        android:angle="135" />
+    <corners android:radius="16dp" />
+</shape>

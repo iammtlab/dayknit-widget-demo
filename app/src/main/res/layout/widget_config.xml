@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="위젯 설정" android:textSize="22sp" android:textStyle="bold"
+            android:paddingBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="상단바 색상" android:textSize="15sp" android:textStyle="bold" />
+        <LinearLayout
+            android:id="@+id/cfg_colors"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp" android:layout_marginBottom="8dp" />
+        <LinearLayout
+            android:id="@+id/cfg_colors2"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="글자 크기" android:textSize="15sp" android:textStyle="bold" />
+        <RadioGroup
+            android:id="@+id/cfg_font"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginTop="8dp">
+            <RadioButton android:id="@+id/font_small"  android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="48dp" android:text="작게" android:textSize="15sp" />
+            <RadioButton android:id="@+id/font_normal" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="48dp" android:text="보통" android:textSize="15sp" />
+            <RadioButton android:id="@+id/font_large"  android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="48dp" android:text="크게" android:textSize="15sp" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="배경 투명도" android:textSize="15sp" android:textStyle="bold" />
+        <SeekBar
+            android:id="@+id/cfg_alpha"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="48dp" android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/cfg_ok"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="52dp" android:layout_marginTop="28dp" android:text="적용" />
+    </LinearLayout>
+</ScrollView>

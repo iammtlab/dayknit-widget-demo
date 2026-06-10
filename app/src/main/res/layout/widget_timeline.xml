@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/widget_bg" android:padding="4dp">
+    <LinearLayout android:id="@+id/widget_header" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="8dp" android:paddingEnd="2dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+        <TextView android:id="@+id/title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:text="타임라인" android:textStyle="bold" android:textSize="15sp" />
+        <TextView android:id="@+id/widget_config" android:layout_width="30dp" android:layout_height="30dp" android:text="⚙" android:textSize="14sp" android:gravity="center" />
+        <ImageView android:id="@+id/widget_add" android:layout_width="30dp" android:layout_height="30dp" android:src="@drawable/widget_add_plus" android:padding="5dp" android:scaleType="fitCenter" android:contentDescription="새 일정 추가" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/tl_datehead" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="2dp" android:paddingBottom="2dp">
+        <TextView android:layout_width="38dp" android:layout_height="wrap_content" android:text="" />
+        <TextView android:id="@+id/dh0" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:singleLine="true" android:textSize="11sp" />
+        <TextView android:id="@+id/dh1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:singleLine="true" android:textSize="11sp" />
+        <TextView android:id="@+id/dh2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:singleLine="true" android:textSize="11sp" />
+        <TextView android:id="@+id/dh3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:singleLine="true" android:textSize="11sp" />
+        <TextView android:id="@+id/dh4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:singleLine="true" android:textSize="11sp" />
+        <TextView android:id="@+id/dh5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:singleLine="true" android:textSize="11sp" />
+        <TextView android:id="@+id/dh6" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:singleLine="true" android:textSize="11sp" />
+    </LinearLayout>
+    <FrameLayout android:id="@+id/tl_body" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <TextView android:id="@+id/tl_msg" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="center" android:gravity="center" android:visibility="gone" android:textSize="12sp" android:padding="16dp" />
+        <ImageView android:id="@+id/ln0" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl0" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln1" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl1" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln2" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl2" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln3" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl3" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln4" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl4" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln5" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl5" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln6" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl6" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln7" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl7" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln8" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl8" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln9" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl9" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln10" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl10" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln11" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl11" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln12" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl12" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln13" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl13" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln14" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl14" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln15" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl15" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln16" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl16" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln17" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl17" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln18" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl18" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln19" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl19" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln20" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl20" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln21" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl21" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln22" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl22" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln23" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl23" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <ImageView android:id="@+id/ln24" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="38dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+        <TextView android:id="@+id/hl24" android:layout_width="38dp" android:layout_height="wrap_content" android:gravity="end" android:paddingEnd="4dp" android:textSize="9sp" android:visibility="gone" />
+        <LinearLayout android:id="@+id/tl_cols" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginStart="38dp" android:orientation="horizontal">
+            <FrameLayout android:id="@+id/col0" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/now0" android:layout_width="match_parent" android:layout_height="2dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+                <FrameLayout android:id="@+id/blk0_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg0_0" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx0_0" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk0_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg0_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx0_1" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk0_2" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg0_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx0_2" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk0_3" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg0_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx0_3" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk0_4" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg0_4" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx0_4" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk0_5" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg0_5" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx0_5" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+            </FrameLayout>
+            <FrameLayout android:id="@+id/col1" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/now1" android:layout_width="match_parent" android:layout_height="2dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+                <FrameLayout android:id="@+id/blk1_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg1_0" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx1_0" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk1_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg1_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx1_1" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk1_2" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg1_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx1_2" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk1_3" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg1_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx1_3" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk1_4" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg1_4" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx1_4" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk1_5" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg1_5" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx1_5" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+            </FrameLayout>
+            <FrameLayout android:id="@+id/col2" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/now2" android:layout_width="match_parent" android:layout_height="2dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+                <FrameLayout android:id="@+id/blk2_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg2_0" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx2_0" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk2_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg2_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx2_1" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk2_2" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg2_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx2_2" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk2_3" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg2_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx2_3" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk2_4" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg2_4" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx2_4" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk2_5" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg2_5" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx2_5" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+            </FrameLayout>
+            <FrameLayout android:id="@+id/col3" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/now3" android:layout_width="match_parent" android:layout_height="2dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+                <FrameLayout android:id="@+id/blk3_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg3_0" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx3_0" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk3_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg3_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx3_1" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk3_2" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg3_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx3_2" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk3_3" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg3_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx3_3" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk3_4" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg3_4" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx3_4" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk3_5" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg3_5" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx3_5" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+            </FrameLayout>
+            <FrameLayout android:id="@+id/col4" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/now4" android:layout_width="match_parent" android:layout_height="2dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+                <FrameLayout android:id="@+id/blk4_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg4_0" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx4_0" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk4_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg4_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx4_1" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk4_2" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg4_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx4_2" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk4_3" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg4_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx4_3" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk4_4" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg4_4" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx4_4" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk4_5" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg4_5" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx4_5" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+            </FrameLayout>
+            <FrameLayout android:id="@+id/col5" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/now5" android:layout_width="match_parent" android:layout_height="2dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+                <FrameLayout android:id="@+id/blk5_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg5_0" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx5_0" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk5_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg5_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx5_1" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk5_2" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg5_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx5_2" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk5_3" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg5_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx5_3" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk5_4" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg5_4" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx5_4" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk5_5" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg5_5" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx5_5" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+            </FrameLayout>
+            <FrameLayout android:id="@+id/col6" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:id="@+id/now6" android:layout_width="match_parent" android:layout_height="2dp" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:visibility="gone" android:contentDescription="" />
+                <FrameLayout android:id="@+id/blk6_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg6_0" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx6_0" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk6_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg6_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx6_1" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk6_2" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg6_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx6_2" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk6_3" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg6_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx6_3" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk6_4" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg6_4" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx6_4" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+                <FrameLayout android:id="@+id/blk6_5" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView android:id="@+id/bkbg6_5" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/chip_bg" android:scaleType="fitXY" android:contentDescription="" />
+                    <TextView android:id="@+id/bktx6_5" android:layout_width="match_parent" android:layout_height="match_parent" android:maxLines="2" android:ellipsize="end" android:textSize="9sp" android:paddingStart="4dp" android:paddingEnd="3dp" android:paddingTop="1dp" />
+                </FrameLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

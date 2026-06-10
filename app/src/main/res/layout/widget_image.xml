@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/widget_bg">
+
+    <ImageView
+        android:id="@+id/widget_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="DayKnit calendar" />
+
+    <!-- 빠른 추가 버튼 (우상단) — 앱의 일정 추가 열기 -->
+    <ImageView
+        android:id="@+id/widget_add"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:padding="8dp"
+        android:background="@drawable/widget_add_bg"
+        android:src="@drawable/widget_add_plus"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:contentDescription="새 일정 추가" />
+</FrameLayout>

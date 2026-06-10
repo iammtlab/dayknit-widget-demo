@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/widget_bg" android:padding="4dp">
+    <LinearLayout android:id="@+id/widget_header" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="8dp" android:paddingEnd="2dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+        <TextView android:id="@+id/title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="할 일" android:textStyle="bold" android:textSize="16sp" />
+        <TextView android:id="@+id/widget_config" android:layout_width="30dp" android:layout_height="30dp" android:text="⚙" android:textSize="14sp" android:gravity="center" />
+        <ImageView android:id="@+id/widget_add" android:layout_width="30dp" android:layout_height="30dp" android:src="@drawable/widget_add_plus" android:padding="5dp" android:scaleType="fitCenter" android:contentDescription="새 일정 추가" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row0" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep0" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck0" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt0" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep1" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck1" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row2" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep2" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck2" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row3" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep3" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck3" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row4" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep4" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck4" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row5" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep5" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck5" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row6" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep6" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck6" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt6" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row7" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep7" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck7" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt7" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row8" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep8" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck8" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt8" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row9" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep9" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck9" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt9" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row10" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep10" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck10" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt10" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row11" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep11" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck11" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt11" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm11" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row12" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep12" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck12" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt12" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row13" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep13" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck13" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt13" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row14" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep14" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck14" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt14" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm14" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row15" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep15" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck15" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt15" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm15" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row16" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep16" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck16" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt16" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/row17" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:id="@+id/sep17" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:paddingStart="6dp" android:paddingTop="6dp" android:paddingBottom="2dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="6dp" android:paddingTop="3dp" android:paddingBottom="3dp">
+            <ImageView android:id="@+id/ck17" android:layout_width="15dp" android:layout_height="15dp" android:layout_marginEnd="9dp" android:src="@drawable/todo_ring" android:contentDescription="" />
+            <TextView android:id="@+id/tt17" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textSize="14sp" />
+            <TextView android:id="@+id/tm17" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@+id/todo_more" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="11sp" android:paddingStart="6dp" android:paddingTop="4dp" />
+</LinearLayout>

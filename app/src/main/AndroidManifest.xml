@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:label="DayKnit Widget Demo"
+        android:supportsRtl="true">
+
+        <!-- 위젯 RemoteViews 를 실제 렌더해 한 화면에 보여줌(런처 진입점·CI 스크린샷 대상) -->
+        <activity
+            android:name=".WidgetGalleryActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 위젯 상호작용용 액티비티(렌더엔 직접 안 쓰이나 PendingIntent 대상이라 등록) -->
+        <activity
+            android:name=".DayPopupActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog.MinWidth"
+            android:taskAffinity=""
+            android:launchMode="singleTask"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+        <activity
+            android:name=".QuickAddActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog.MinWidth"
+            android:taskAffinity=""
+            android:launchMode="singleTask"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+        <activity
+            android:name=".WidgetConfigActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:taskAffinity=""
+            android:exported="false" />
+    </application>
+</manifest>

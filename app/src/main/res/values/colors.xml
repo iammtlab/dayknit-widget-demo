@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 위젯 letterbox 배경(라이트). 다크는 values-night/colors.xml. -->
+    <color name="widget_bg">#FFFFFF</color>
+</resources>
