@@ -60,15 +60,18 @@ jobs:
             mkdir -p /tmp/shots
             adb wait-for-device
             adb install -r /tmp/widget-demo.apk
-            shot() {
-              adb shell am start -S -n com.dayknit.widget/.WidgetGalleryActivity --es which "$1"
-              sleep 6
-              adb exec-out screencap -p > "/tmp/shots/$2.png"
-            }
-            shot month 01-month
-            shot todo 02-todo
-            shot timeline 03-timeline
-            shot all 04-all
+            adb shell am start -S -n com.dayknit.widget/.WidgetGalleryActivity --es which month
+            sleep 6
+            adb exec-out screencap -p > /tmp/shots/01-month.png
+            adb shell am start -S -n com.dayknit.widget/.WidgetGalleryActivity --es which todo
+            sleep 6
+            adb exec-out screencap -p > /tmp/shots/02-todo.png
+            adb shell am start -S -n com.dayknit.widget/.WidgetGalleryActivity --es which timeline
+            sleep 6
+            adb exec-out screencap -p > /tmp/shots/03-timeline.png
+            adb shell am start -S -n com.dayknit.widget/.WidgetGalleryActivity --es which all
+            sleep 6
+            adb exec-out screencap -p > /tmp/shots/04-all.png
             echo "=== captured ===" ; ls -la /tmp/shots
 
       - name: Upload screenshots
