@@ -48,21 +48,25 @@ jobs:
           arch: x86_64
           target: google_apis
           disable-animations: true
+          working-directory: ${{ github.workspace }}
           script: |
             set -e
-            mkdir -p shots
-            APK=$(find app/build/outputs/apk/debug -name '*.apk' | head -1)
+            WS="${{ github.workspace }}"
+            mkdir -p "$WS/shots"
+            APK=$(find "$WS/app/build/outputs/apk" -name '*.apk' | head -1)
             echo "APK=$APK"
+            test -n "$APK" || { echo "APK 못 찾음"; ls -R "$WS/app/build/outputs" || true; exit 1; }
             adb install -r "$APK"
             adb shell am start -n com.dayknit.widget/.WidgetGalleryActivity
-            sleep 8
-            adb exec-out screencap -p > shots/01-top.png
+            sleep 10
+            adb exec-out screencap -p > "$WS/shots/01-top.png"
             adb shell input swipe 540 1600 540 300 ; sleep 2
-            adb exec-out screencap -p > shots/02.png
+            adb exec-out screencap -p > "$WS/shots/02.png"
             adb shell input swipe 540 1600 540 300 ; sleep 2
-            adb exec-out screencap -p > shots/03.png
+            adb exec-out screencap -p > "$WS/shots/03.png"
             adb shell input swipe 540 1600 540 300 ; sleep 2
-            adb exec-out screencap -p > shots/04-bottom.png
+            adb exec-out screencap -p > "$WS/shots/04-bottom.png"
+            echo "=== captured ===" ; ls -la "$WS/shots"
 
       - name: Upload screenshots
         if: always()
