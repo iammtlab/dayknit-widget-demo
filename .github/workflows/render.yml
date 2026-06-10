@@ -33,7 +33,13 @@ jobs:
           echo "$HOME/gradle/gradle-8.7/bin" >> "$GITHUB_PATH"
 
       - name: Build debug APK
-        run: gradle assembleDebug --no-daemon --stacktrace
+        run: |
+          gradle assembleDebug --no-daemon --stacktrace
+          APK=$(find "$GITHUB_WORKSPACE" -name '*.apk' | head -1)
+          echo "found APK: $APK"
+          test -n "$APK" || { echo "!!! NO APK PRODUCED"; ls -R "$GITHUB_WORKSPACE/app/build" 2>/dev/null | head -60; exit 1; }
+          cp "$APK" /tmp/widget-demo.apk
+          echo "copied to /tmp/widget-demo.apk"; ls -la /tmp/widget-demo.apk
 
       - name: Enable KVM
         run: |
@@ -51,28 +57,24 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot
           script: |
             set -e
-            cd "$GITHUB_WORKSPACE"
-            mkdir -p shots
-            APK=$(find "$GITHUB_WORKSPACE/app/build/outputs/apk" -name '*.apk' | head -1)
-            echo "APK=$APK"
-            test -n "$APK" || { echo "no apk"; find "$GITHUB_WORKSPACE" -name '*.apk'; exit 1; }
+            mkdir -p /tmp/shots
             adb wait-for-device
-            adb install -r "$APK"
+            adb install -r /tmp/widget-demo.apk
             adb shell am start -n com.dayknit.widget/.WidgetGalleryActivity
             sleep 12
-            adb exec-out screencap -p > shots/01-top.png
+            adb exec-out screencap -p > /tmp/shots/01-top.png
             adb shell input swipe 540 1600 540 300 ; sleep 2
-            adb exec-out screencap -p > shots/02.png
+            adb exec-out screencap -p > /tmp/shots/02.png
             adb shell input swipe 540 1600 540 300 ; sleep 2
-            adb exec-out screencap -p > shots/03.png
+            adb exec-out screencap -p > /tmp/shots/03.png
             adb shell input swipe 540 1600 540 300 ; sleep 2
-            adb exec-out screencap -p > shots/04-bottom.png
-            echo "=== captured ===" ; ls -la shots
+            adb exec-out screencap -p > /tmp/shots/04-bottom.png
+            echo "=== captured ===" ; ls -la /tmp/shots
 
       - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: widget-screenshots
-          path: shots/*.png
+          path: /tmp/shots/*.png
           if-no-files-found: warn
