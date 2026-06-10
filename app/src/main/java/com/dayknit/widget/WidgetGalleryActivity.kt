@@ -25,6 +25,9 @@ class WidgetGalleryActivity : Activity() {
         super.onCreate(savedInstanceState)
         writeSample()
 
+        // "which": month|todo|timeline 면 그 위젯만 크게(스크린샷 1장에 꽉 차게), 그 외엔 전부 세로 스택
+        val which = intent?.getStringExtra("which") ?: "all"
+        val solo = which != "all"
         val mgr = AppWidgetManager.getInstance(this)
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -51,9 +54,12 @@ class WidgetGalleryActivity : Activity() {
             root.addView(frame)
         }
 
-        section("월간 (4x5)", 320, 360, MonthWidgetProvider.buildViews(this, 999001))
-        section("할 일", 240, 360, TodoWidgetProvider.buildViews(this, 999002))
-        section("타임라인 (데이뷰, 3일)", 360, 360, TimelineWidgetProvider.buildViews(this, mgr, 999003))
+        if (which == "all" || which == "month")
+            section("월간 (4x5)", if (solo) 360 else 320, if (solo) 470 else 360, MonthWidgetProvider.buildViews(this, 999001))
+        if (which == "all" || which == "todo")
+            section("할 일", if (solo) 320 else 240, if (solo) 560 else 360, TodoWidgetProvider.buildViews(this, 999002))
+        if (which == "all" || which == "timeline")
+            section("타임라인 (데이뷰, 3일)", 360, if (solo) 540 else 360, TimelineWidgetProvider.buildViews(this, mgr, 999003))
 
         setContentView(ScrollView(this).apply { addView(root) })
     }
