@@ -6,9 +6,21 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   render:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -74,10 +86,58 @@ jobs:
             adb exec-out screencap -p > /tmp/shots/04-all.png
             echo "=== captured ===" ; ls -la /tmp/shots
 
-      - name: Upload screenshots
+      - name: Upload screenshots (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: widget-screenshots
           path: /tmp/shots/*.png
           if-no-files-found: warn
+
+      - name: Build Pages site
+        if: success()
+        run: |
+          mkdir -p site
+          cp /tmp/shots/*.png site/
+          cat > site/index.html <<'HTML'
+          <!doctype html><html lang="ko"><head><meta charset="utf-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <title>DayKnit 위젯 미리보기</title>
+          <style>
+            body{font-family:-apple-system,system-ui,sans-serif;background:#eef1f5;margin:0;padding:24px;color:#1f2328}
+            h1{font-size:20px;margin:0 0 4px}
+            .sub{color:#6b7280;font-size:13px;margin-bottom:20px}
+            .grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
+            figure{margin:0;background:#fff;border:1px solid #e2e6ea;border-radius:12px;padding:12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+            img{display:block;width:300px;max-width:92vw;border-radius:6px}
+            figcaption{margin-top:8px;font-size:13px;font-weight:600;text-align:center}
+          </style></head>
+          <body>
+            <h1>DayKnit 홈 위젯 미리보기</h1>
+            <div class="sub">CI 에뮬레이터 실제 렌더 · 빌드 #${{ github.run_number }} · push 마다 자동 업데이트</div>
+            <div class="grid">
+              <figure><img src="01-month.png?v=${{ github.run_number }}"><figcaption>월간 (4x5)</figcaption></figure>
+              <figure><img src="02-todo.png?v=${{ github.run_number }}"><figcaption>할 일</figcaption></figure>
+              <figure><img src="03-timeline.png?v=${{ github.run_number }}"><figcaption>타임라인 (데이뷰)</figcaption></figure>
+              <figure><img src="04-all.png?v=${{ github.run_number }}"><figcaption>전체 스택</figcaption></figure>
+            </div>
+          </body></html>
+          HTML
+          ls -la site
+
+      - name: Setup Pages
+        if: success()
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload Pages artifact
+        if: success()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to Pages
+        id: deploy
+        if: success()
+        uses: actions/deploy-pages@v4
