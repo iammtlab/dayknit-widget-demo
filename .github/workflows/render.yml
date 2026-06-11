@@ -86,6 +86,7 @@ jobs:
             adb exec-out screencap -p > /tmp/shots/04-settings.png
             adb shell am start -S -n com.dayknit.widget/.QuickAddActivity
             sleep 4
+            adb shell input keyevent 111 ; sleep 1
             adb exec-out screencap -p > /tmp/shots/05-quickadd.png
             echo "=== captured ===" ; ls -la /tmp/shots
 

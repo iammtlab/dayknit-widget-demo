@@ -50,6 +50,7 @@ class QuickAddActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)  // 카드 위 타이틀바 제거
         build()
     }
     override fun onNewIntent(intent: android.content.Intent?) {
