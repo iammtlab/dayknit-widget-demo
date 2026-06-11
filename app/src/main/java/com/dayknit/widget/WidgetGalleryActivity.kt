@@ -99,6 +99,17 @@ class WidgetGalleryActivity : Activity() {
             day(3, Triple("출장", "#0EA5A5", "09:00"))
             day(5, Triple("세미나", "#22A06B", "13:00"))
             File(dir, "events.json").writeText(root.toString())
+
+            // 빠른추가 리스트 선택용 샘플 lists.json
+            val lists = JSONArray()
+            fun lst(id: String, label: String, color: String) =
+                lists.put(JSONObject().put("id", id).put("label", label).put("color", color))
+            lst("inbox", "받은 편지함", "#4772FA")
+            lst("work", "업무", "#E5544B")
+            lst("personal", "개인", "#22A06B")
+            lst("health", "건강", "#0EA5A5")
+            lst("study", "공부", "#6D4AFA")
+            File(dir, "lists.json").writeText(lists.toString())
         } catch (_: Exception) {}
     }
 }
