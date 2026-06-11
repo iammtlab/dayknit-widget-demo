@@ -81,9 +81,12 @@ jobs:
             adb shell am start -S -n com.dayknit.widget/.WidgetGalleryActivity --es which timeline
             sleep 6
             adb exec-out screencap -p > /tmp/shots/03-timeline.png
-            adb shell am start -S -n com.dayknit.widget/.WidgetGalleryActivity --es which all
-            sleep 6
-            adb exec-out screencap -p > /tmp/shots/04-all.png
+            adb shell am start -S -n com.dayknit.widget/.WidgetConfigActivity --ei appWidgetId 1 --ez demoTimeline true
+            sleep 5
+            adb exec-out screencap -p > /tmp/shots/04-settings.png
+            adb shell am start -S -n com.dayknit.widget/.QuickAddActivity
+            sleep 4
+            adb exec-out screencap -p > /tmp/shots/05-quickadd.png
             echo "=== captured ===" ; ls -la /tmp/shots
 
       - name: Upload screenshots (artifact)
@@ -119,7 +122,8 @@ jobs:
               <figure><img src="01-month.png?v=${{ github.run_number }}"><figcaption>월간 (4x5)</figcaption></figure>
               <figure><img src="02-todo.png?v=${{ github.run_number }}"><figcaption>할 일</figcaption></figure>
               <figure><img src="03-timeline.png?v=${{ github.run_number }}"><figcaption>타임라인 (데이뷰)</figcaption></figure>
-              <figure><img src="04-all.png?v=${{ github.run_number }}"><figcaption>전체 스택</figcaption></figure>
+              <figure><img src="04-settings.png?v=${{ github.run_number }}"><figcaption>위젯 설정</figcaption></figure>
+              <figure><img src="05-quickadd.png?v=${{ github.run_number }}"><figcaption>위젯에서 바로 추가</figcaption></figure>
             </div>
           </body></html>
           HTML

@@ -17,25 +17,25 @@
             </intent-filter>
         </activity>
 
-        <!-- 위젯 상호작용용 액티비티(렌더엔 직접 안 쓰이나 PendingIntent 대상이라 등록) -->
+        <!-- 위젯 상호작용용 액티비티. 데모에선 adb 로 직접 띄워 캡처하므로 exported=true. -->
         <activity
             android:name=".DayPopupActivity"
             android:theme="@android:style/Theme.DeviceDefault.Dialog.MinWidth"
             android:taskAffinity=""
             android:launchMode="singleTask"
             android:excludeFromRecents="true"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".QuickAddActivity"
             android:theme="@android:style/Theme.DeviceDefault.Dialog.MinWidth"
             android:taskAffinity=""
             android:launchMode="singleTask"
             android:excludeFromRecents="true"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".WidgetConfigActivity"
             android:theme="@android:style/Theme.DeviceDefault.Light"
             android:taskAffinity=""
-            android:exported="false" />
+            android:exported="true" />
     </application>
 </manifest>

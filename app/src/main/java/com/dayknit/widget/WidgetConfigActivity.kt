@@ -58,7 +58,9 @@ class WidgetConfigActivity : Activity() {
 
         providerClass = AppWidgetManager.getInstance(this)
             .getAppWidgetInfo(appWidgetId)?.provider?.className ?: ""
-        val isTimeline = providerClass.endsWith("TimelineWidgetProvider")
+        // 데모 렌더용: 실제 위젯 없이도 타임라인 옵션(일수·시간범위)까지 보이게
+        val isTimeline = providerClass.endsWith("TimelineWidgetProvider") ||
+            intent?.getBooleanExtra("demoTimeline", false) == true
 
         val prefs = getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         selectedColor = prefs.getString("hcolor_$appWidgetId", "#4772FA") ?: "#4772FA"

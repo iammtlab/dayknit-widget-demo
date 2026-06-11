@@ -42,9 +42,10 @@ class WidgetGalleryActivity : Activity() {
                 setTextColor(0xFF333333.toInt())
                 setPadding(0, dp(12), 0, dp(5))
             })
+            val fw = if (w <= 0) LinearLayout.LayoutParams.MATCH_PARENT else dp(w)
             val frame = FrameLayout(this).apply {
                 setBackgroundColor(0xFFFFFFFF.toInt())
-                layoutParams = LinearLayout.LayoutParams(dp(w), dp(h))
+                layoutParams = LinearLayout.LayoutParams(fw, dp(h))
             }
             try {
                 frame.addView(rv.apply(applicationContext, frame))
@@ -54,12 +55,13 @@ class WidgetGalleryActivity : Activity() {
             root.addView(frame)
         }
 
+        // solo(위젯별)는 화면폭(match_parent=-1)에 꽉 차게 → 실제 홈 위젯처럼, 우측 잘림 없음
         if (which == "all" || which == "month")
-            section("월간 (4x5)", if (solo) 360 else 320, if (solo) 470 else 360, MonthWidgetProvider.buildViews(this, 999001))
+            section("월간 (4x5)", if (solo) -1 else 320, if (solo) 460 else 360, MonthWidgetProvider.buildViews(this, 999001))
         if (which == "all" || which == "todo")
-            section("할 일", if (solo) 320 else 240, if (solo) 560 else 360, TodoWidgetProvider.buildViews(this, 999002))
+            section("할 일", if (solo) -1 else 240, if (solo) 560 else 360, TodoWidgetProvider.buildViews(this, 999002))
         if (which == "all" || which == "timeline")
-            section("타임라인 (데이뷰, 3일)", 360, if (solo) 540 else 360, TimelineWidgetProvider.buildViews(this, mgr, 999003))
+            section("타임라인 (데이뷰, 3일)", if (solo) -1 else 360, if (solo) 540 else 360, TimelineWidgetProvider.buildViews(this, mgr, 999003))
 
         setContentView(ScrollView(this).apply { addView(root) })
     }
