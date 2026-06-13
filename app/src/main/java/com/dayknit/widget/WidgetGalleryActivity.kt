@@ -69,13 +69,21 @@ class WidgetGalleryActivity : Activity() {
         if (which == "all" || which == "timeline")
             section("타임라인 (데이뷰, 3일)", if (solo) -1 else 360, if (solo) 540 else 360, TimelineWidgetProvider.buildViews(this, mgr, 999003))
 
-        // 시제품 A — Jetpack Glance (compose → RemoteViews)
+        // Glance (compose → RemoteViews)
         if (which == "glancetodo") {
             try {
-                val rv = runBlocking { TodoGlanceWidget().compose(this@WidgetGalleryActivity, size = DpSize(300.dp, 520.dp)) }
-                section("할 일 — 시제품 A (Glance)", -1, 540, rv)
+                val rv = runBlocking { TodoGlanceWidget().compose(this@WidgetGalleryActivity, size = DpSize(320.dp, 600.dp)) }
+                section("할 일 — Glance", -1, 600, rv)
             } catch (e: Exception) {
-                sectionView("Glance 렌더 실패", -1, 100, TextView(this).apply { text = "${e.message}" })
+                sectionView("Glance todo 렌더 실패", -1, 100, TextView(this).apply { text = "${e.message}" })
+            }
+        }
+        if (which == "glancemonth") {
+            try {
+                val rv = runBlocking { MonthGlanceWidget().compose(this@WidgetGalleryActivity, size = DpSize(360.dp, 460.dp)) }
+                section("월간 — Glance", -1, 470, rv)
+            } catch (e: Exception) {
+                sectionView("Glance month 렌더 실패", -1, 100, TextView(this).apply { text = "${e.message}" })
             }
         }
         // 시제품 B — 이미지 스냅샷 (Canvas → Bitmap)
