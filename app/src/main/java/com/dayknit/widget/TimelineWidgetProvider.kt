@@ -68,7 +68,12 @@ class TimelineWidgetProvider : AppWidgetProvider() {
             val endH = WidgetConfig.endHour(ctx, id)
 
             val views = RemoteViews(ctx.packageName, R.layout.widget_timeline)
-            views.setInt(R.id.widget_root, "setBackgroundColor", rootArgb)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                views.setInt(R.id.widget_root, "setBackgroundResource", R.drawable.widget_bg_round)
+                views.setColorStateList(R.id.widget_root, "setBackgroundTintList", android.content.res.ColorStateList.valueOf(rootArgb))
+            } else {
+                views.setInt(R.id.widget_root, "setBackgroundColor", rootArgb)
+            }
             views.setInt(R.id.widget_header, "setBackgroundColor", header)
             views.setTextColor(R.id.title, onHeader)
             views.setTextColor(R.id.widget_config, onHeader)

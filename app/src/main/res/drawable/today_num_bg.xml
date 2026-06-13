@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 오늘 날짜 원형 강조(구글 캘린더식). 흰 원 → 런타임 테마색 솔리드 틴트 + 흰 숫자. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="#FFFFFFFF" />
+</shape>

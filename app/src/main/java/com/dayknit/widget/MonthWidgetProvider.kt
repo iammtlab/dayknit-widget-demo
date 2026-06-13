@@ -126,22 +126,26 @@ class MonthWidgetProvider : AppWidgetProvider() {
                 val c = cells[i]
                 val dId = res.getIdentifier("d$i", "id", pkg)
                 val cellId = res.getIdentifier("cell$i", "id", pkg)
-                // 오늘 셀 은은한 강조 — 테마색 저알파 둥근 배경(API31+)
-                if (c.isToday && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    views.setInt(cellId, "setBackgroundResource", R.drawable.today_cell_bg)
-                    views.setColorStateList(cellId, "setBackgroundTintList",
-                        android.content.res.ColorStateList.valueOf((0x26 shl 24) or (header and 0x00FFFFFF)))
-                } else {
-                    views.setInt(cellId, "setBackgroundColor", Color.TRANSPARENT)
-                }
+                val dens = ctx.resources.displayMetrics.density
+                fun px(v: Float) = (v * dens).toInt()
                 views.setTextViewText(dId, c.day.toString())
-                views.setTextColor(dId, when {
-                    c.isToday -> header
-                    !c.inMonth -> faint
-                    c.dow == Calendar.SUNDAY -> if (c.inMonth) sun else faint
-                    c.dow == Calendar.SATURDAY -> if (c.inMonth) sat else faint
-                    else -> fg
-                })
+                // 오늘 = 구글식 원형 강조(accent 원 + 흰 숫자), 그 외 = 평소 색·좌측 패딩
+                if (c.isToday && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    views.setInt(dId, "setBackgroundResource", R.drawable.today_num_bg)
+                    views.setColorStateList(dId, "setBackgroundTintList", android.content.res.ColorStateList.valueOf(header))
+                    views.setTextColor(dId, onHeader)
+                    views.setViewPadding(dId, px(6f), px(2f), px(6f), px(2f))
+                } else {
+                    views.setInt(dId, "setBackgroundColor", Color.TRANSPARENT)
+                    views.setViewPadding(dId, px(3f), 0, 0, 0)
+                    views.setTextColor(dId, when {
+                        c.isToday -> header
+                        !c.inMonth -> faint
+                        c.dow == Calendar.SUNDAY -> if (c.inMonth) sun else faint
+                        c.dow == Calendar.SATURDAY -> if (c.inMonth) sat else faint
+                        else -> fg
+                    })
+                }
                 val n = c.events.size
                 for (k in 0 until 4) {
                     val vId = res.getIdentifier("ev${i}_$k", "id", pkg)
