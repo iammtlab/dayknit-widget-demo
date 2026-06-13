@@ -84,14 +84,15 @@ class MonthGlanceWidget : GlanceAppWidget() {
             // 6주 격자
             for (week in weeks) {
                 Row(GlanceModifier.fillMaxWidth().defaultWeight().padding(horizontal = 3.dp)) {
-                    for (c in week) DayCell(c)
+                    // defaultWeight() 는 Row 스코프에서만 가능 → 여기서 modifier 로 만들어 넘김
+                    for (c in week) DayCell(c, GlanceModifier.defaultWeight().fillMaxHeight())
                 }
             }
         }
     }
 
     @Composable
-    private fun DayCell(c: Cell) {
+    private fun DayCell(c: Cell, modifier: GlanceModifier) {
         val numColor = when {
             !c.inMonth -> 0xFFC4C9D0
             c.isToday -> 0xFF4772FA
@@ -99,7 +100,7 @@ class MonthGlanceWidget : GlanceAppWidget() {
             c.dow == Calendar.SATURDAY -> 0xFF3F74E0
             else -> 0xFF1F2328
         }
-        Column(GlanceModifier.defaultWeight().fillMaxHeight().padding(2.dp)) {
+        Column(modifier.padding(2.dp)) {
             Text(
                 c.day.toString(),
                 style = TextStyle(color = ColorProvider(Color(numColor)), fontSize = 11.sp,
