@@ -53,27 +53,30 @@ class TodoGlanceWidget : GlanceAppWidget() {
             }
             // 리스트
             Column(modifier = GlanceModifier.padding(horizontal = 12.dp, vertical = 6.dp)) {
+                // 각 항목을 자체 Column 으로 묶음 — Glance 컨테이너 자식 10개 제한 회피
                 rows.forEach { r ->
-                    if (r.group != null) {
-                        Text(
-                            r.group,
-                            style = TextStyle(color = ColorProvider(Color(0xFF4772FA)), fontSize = 12.sp, fontWeight = FontWeight.Bold),
-                            modifier = GlanceModifier.padding(top = 9.dp, bottom = 3.dp),
-                        )
-                    }
-                    Row(
-                        modifier = GlanceModifier.fillMaxWidth().padding(vertical = 6.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Box(GlanceModifier.size(13.dp).cornerRadius(7.dp).background(ColorProvider(Color(r.color)))) {}
-                        Spacer(GlanceModifier.width(11.dp))
-                        Text(
-                            r.title,
-                            style = TextStyle(color = ColorProvider(Color(0xFF1F2328)), fontSize = 14.sp),
-                            modifier = GlanceModifier.defaultWeight(),
-                        )
-                        if (r.time != null) {
-                            Text(r.time, style = TextStyle(color = ColorProvider(Color(0xFF6B7280)), fontSize = 12.sp))
+                    Column(GlanceModifier.fillMaxWidth()) {
+                        if (r.group != null) {
+                            Text(
+                                r.group,
+                                style = TextStyle(color = ColorProvider(Color(0xFF4772FA)), fontSize = 12.sp, fontWeight = FontWeight.Bold),
+                                modifier = GlanceModifier.padding(top = 9.dp, bottom = 3.dp),
+                            )
+                        }
+                        Row(
+                            modifier = GlanceModifier.fillMaxWidth().padding(vertical = 6.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Box(GlanceModifier.size(13.dp).cornerRadius(7.dp).background(ColorProvider(Color(r.color)))) {}
+                            Spacer(GlanceModifier.width(11.dp))
+                            Text(
+                                r.title,
+                                style = TextStyle(color = ColorProvider(Color(0xFF1F2328)), fontSize = 14.sp),
+                                modifier = GlanceModifier.defaultWeight(),
+                            )
+                            if (r.time != null) {
+                                Text(r.time, style = TextStyle(color = ColorProvider(Color(0xFF6B7280)), fontSize = 12.sp))
+                            }
                         }
                     }
                 }
