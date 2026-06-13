@@ -22,7 +22,7 @@ import java.util.Calendar
 /** 월간 캘린더 위젯 — Jetpack Glance. 7열 정적 격자(Row 7칸 weight) × 6주. 둥근 색칩. */
 class MonthGlanceWidget : GlanceAppWidget() {
 
-    private data class Cell(val day: Int, val inMonth: Boolean, val isToday: Boolean, val dow: Int, val events: List<Long>)
+    private data class Cell(val day: Int, val inMonth: Boolean, val isToday: Boolean, val dow: Int, val events: List<Pair<String, Long>>)
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val weeks = buildMonth()
@@ -35,10 +35,10 @@ class MonthGlanceWidget : GlanceAppWidget() {
         val today = cal.get(Calendar.DAY_OF_MONTH)
         // 샘플 이벤트 색(오늘/내일/모레/주말)
         val sample = mapOf(
-            today to listOf(0xFF22A06B, 0xFF4772FA),
-            (today + 1) to listOf(0xFF6D4AFA),
-            (today + 2) to listOf(0xFFF2802E, 0xFFE0508F),
-            (today + 5) to listOf(0xFF0EA5A5),
+            today to listOf("기상·운동" to 0xFF22A06B, "주간 회의" to 0xFF4772FA),
+            (today + 1) to listOf("치과 예약" to 0xFF6D4AFA),
+            (today + 2) to listOf("점심 약속" to 0xFFF2802E, "영화 관람" to 0xFFE0508F),
+            (today + 5) to listOf("세미나" to 0xFF0EA5A5),
         )
         val first = Calendar.getInstance().apply { set(year, month, 1) }
         val lead = first.get(Calendar.DAY_OF_WEEK) - Calendar.SUNDAY
@@ -69,9 +69,10 @@ class MonthGlanceWidget : GlanceAppWidget() {
                 GlanceModifier.fillMaxWidth().background(ColorProvider(Color(0xFF4772FA))).padding(horizontal = 14.dp, vertical = 10.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text(title, style = TextStyle(color = ColorProvider(Color.White), fontSize = 16.sp, fontWeight = FontWeight.Bold))
-                Spacer(GlanceModifier.defaultWeight())
-                Text("‹    ›    ⚙    +", style = TextStyle(color = ColorProvider(Color.White), fontSize = 14.sp))
+                Text("‹", style = TextStyle(color = ColorProvider(Color.White), fontSize = 16.sp))
+                Text(title, modifier = GlanceModifier.defaultWeight(),
+                    style = TextStyle(color = ColorProvider(Color.White), fontSize = 16.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center))
+                Text("›    ⚙    +", style = TextStyle(color = ColorProvider(Color.White), fontSize = 14.sp))
             }
             // 요일 헤더
             Row(GlanceModifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 4.dp)) {
@@ -106,13 +107,15 @@ class MonthGlanceWidget : GlanceAppWidget() {
                 style = TextStyle(color = ColorProvider(Color(numColor)), fontSize = 11.sp,
                     fontWeight = if (c.isToday) FontWeight.Bold else FontWeight.Normal),
             )
-            for (color in c.events.take(2)) {
+            for ((title, color) in c.events.take(2)) {
+                Spacer(GlanceModifier.height(2.dp))
                 Text(
-                    " ",
+                    title,
                     maxLines = 1,
-                    modifier = GlanceModifier.fillMaxWidth().padding(top = 2.dp)
-                        .background(ColorProvider(Color(color))).cornerRadius(3.dp),
-                    style = TextStyle(color = ColorProvider(Color.White), fontSize = 8.sp),
+                    modifier = GlanceModifier.fillMaxWidth()
+                        .background(ColorProvider(Color(color))).cornerRadius(3.dp)
+                        .padding(horizontal = 3.dp, vertical = 1.dp),
+                    style = TextStyle(color = ColorProvider(Color.White), fontSize = 9.sp),
                 )
             }
         }

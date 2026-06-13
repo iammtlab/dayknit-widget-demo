@@ -5,8 +5,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.glance.ColorFilter
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
+import androidx.glance.Image
+import androidx.glance.ImageProvider
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.cornerRadius
 import androidx.glance.appwidget.provideContent
@@ -64,10 +67,16 @@ class TodoGlanceWidget : GlanceAppWidget() {
                             )
                         }
                         Row(
-                            modifier = GlanceModifier.fillMaxWidth().padding(vertical = 6.dp),
+                            modifier = GlanceModifier.fillMaxWidth().padding(vertical = 4.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
-                            Box(GlanceModifier.size(13.dp).cornerRadius(7.dp).background(ColorProvider(Color(r.color)))) {}
+                            // 링(테두리 원) — todo_ring 흰 링을 일정 색으로 틴트(이전 RemoteViews 룩 일치)
+                            Image(
+                                provider = ImageProvider(R.drawable.todo_ring),
+                                contentDescription = null,
+                                colorFilter = ColorFilter.tint(ColorProvider(Color(r.color))),
+                                modifier = GlanceModifier.size(15.dp),
+                            )
                             Spacer(GlanceModifier.width(11.dp))
                             Text(
                                 r.title,
