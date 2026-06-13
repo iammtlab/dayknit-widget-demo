@@ -28,4 +28,17 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    // Jetpack Glance 시제품용 — Compose 컴파일러(Kotlin 1.9.24 ↔ compose-compiler 1.5.14)
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
+    }
+}
+
+dependencies {
+    implementation("androidx.glance:glance-appwidget:1.1.1")
+    implementation("androidx.glance:glance-material3:1.1.1")
 }

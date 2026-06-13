@@ -88,6 +88,12 @@ jobs:
             sleep 4
             adb shell input keyevent 111 ; sleep 1
             adb exec-out screencap -p > /tmp/shots/05-quickadd.png
+            adb shell am start -S -n com.dayknit.widget/.WidgetGalleryActivity --es which glancetodo
+            sleep 6
+            adb exec-out screencap -p > /tmp/shots/06-todo-glance.png
+            adb shell am start -S -n com.dayknit.widget/.WidgetGalleryActivity --es which imagetodo
+            sleep 5
+            adb exec-out screencap -p > /tmp/shots/07-todo-image.png
             echo "=== captured ===" ; ls -la /tmp/shots
 
       - name: Upload screenshots (artifact)
@@ -119,9 +125,15 @@ jobs:
           <body>
             <h1>DayKnit 홈 위젯 미리보기</h1>
             <div class="sub">CI 에뮬레이터 실제 렌더 · 빌드 #${{ github.run_number }} · push 마다 자동 업데이트</div>
+            <h2 style="font-size:15px;margin:16px 0 2px">할 일 위젯 — 두 방식 비교 (택1)</h2>
+            <div class="grid">
+              <figure><img src="06-todo-glance.png?v=${{ github.run_number }}"><figcaption>시제품 A · Jetpack Glance (유명앱 방식)</figcaption></figure>
+              <figure><img src="07-todo-image.png?v=${{ github.run_number }}"><figcaption>시제품 B · 이미지 스냅샷 (픽셀 자유)</figcaption></figure>
+            </div>
+            <h2 style="font-size:15px;margin:22px 0 2px">현재 위젯들 (RemoteViews)</h2>
             <div class="grid">
               <figure><img src="01-month.png?v=${{ github.run_number }}"><figcaption>월간 (4x5)</figcaption></figure>
-              <figure><img src="02-todo.png?v=${{ github.run_number }}"><figcaption>할 일</figcaption></figure>
+              <figure><img src="02-todo.png?v=${{ github.run_number }}"><figcaption>할 일 (현재)</figcaption></figure>
               <figure><img src="03-timeline.png?v=${{ github.run_number }}"><figcaption>타임라인 (데이뷰)</figcaption></figure>
               <figure><img src="04-settings.png?v=${{ github.run_number }}"><figcaption>위젯 설정</figcaption></figure>
               <figure><img src="05-quickadd.png?v=${{ github.run_number }}"><figcaption>위젯에서 바로 추가</figcaption></figure>

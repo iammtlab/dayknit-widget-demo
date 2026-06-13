@@ -4,11 +4,18 @@ import android.app.Activity
 import android.appwidget.AppWidgetManager
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.View
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RemoteViews
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
+import androidx.glance.ExperimentalGlanceApi
+import androidx.glance.appwidget.compose
+import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -21,11 +28,12 @@ import java.util.Calendar
  */
 class WidgetGalleryActivity : Activity() {
 
+    @OptIn(ExperimentalGlanceApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         writeSample()
 
-        // "which": month|todo|timeline 면 그 위젯만 크게(스크린샷 1장에 꽉 차게), 그 외엔 전부 세로 스택
+        // "which": month|todo|timeline|glancetodo|imagetodo 면 그것만 크게, 그 외엔 전부 세로 스택
         val which = intent?.getStringExtra("which") ?: "all"
         val solo = which != "all"
         val mgr = AppWidgetManager.getInstance(this)
@@ -35,24 +43,22 @@ class WidgetGalleryActivity : Activity() {
             setPadding(dp(10), dp(10), dp(10), dp(10))
         }
 
+        fun titleTv(title: String) = TextView(this).apply {
+            text = title; setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
+            setTextColor(0xFF333333.toInt()); setPadding(0, dp(12), 0, dp(5))
+        }
+        fun frameFor(w: Int, h: Int) = FrameLayout(this).apply {
+            setBackgroundColor(0xFFFFFFFF.toInt())
+            layoutParams = LinearLayout.LayoutParams(if (w <= 0) LinearLayout.LayoutParams.MATCH_PARENT else dp(w), dp(h))
+        }
+        fun sectionView(title: String, w: Int, h: Int, v: View) {
+            root.addView(titleTv(title)); val f = frameFor(w, h); f.addView(v); root.addView(f)
+        }
         fun section(title: String, w: Int, h: Int, rv: RemoteViews) {
-            root.addView(TextView(this).apply {
-                text = title
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
-                setTextColor(0xFF333333.toInt())
-                setPadding(0, dp(12), 0, dp(5))
-            })
-            val fw = if (w <= 0) LinearLayout.LayoutParams.MATCH_PARENT else dp(w)
-            val frame = FrameLayout(this).apply {
-                setBackgroundColor(0xFFFFFFFF.toInt())
-                layoutParams = LinearLayout.LayoutParams(fw, dp(h))
-            }
-            try {
-                frame.addView(rv.apply(applicationContext, frame))
-            } catch (e: Exception) {
-                frame.addView(TextView(this@WidgetGalleryActivity).apply { text = "render 실패: ${e.message}" })
-            }
-            root.addView(frame)
+            root.addView(titleTv(title)); val f = frameFor(w, h)
+            try { f.addView(rv.apply(applicationContext, f)) }
+            catch (e: Exception) { f.addView(TextView(this).apply { text = "render 실패: ${e.message}" }) }
+            root.addView(f)
         }
 
         // solo(위젯별)는 화면폭(match_parent=-1)에 꽉 차게 → 실제 홈 위젯처럼, 우측 잘림 없음
@@ -62,6 +68,24 @@ class WidgetGalleryActivity : Activity() {
             section("할 일", if (solo) -1 else 240, if (solo) 560 else 360, TodoWidgetProvider.buildViews(this, 999002))
         if (which == "all" || which == "timeline")
             section("타임라인 (데이뷰, 3일)", if (solo) -1 else 360, if (solo) 540 else 360, TimelineWidgetProvider.buildViews(this, mgr, 999003))
+
+        // 시제품 A — Jetpack Glance (compose → RemoteViews)
+        if (which == "glancetodo") {
+            try {
+                val rv = runBlocking { TodoGlanceWidget().compose(this@WidgetGalleryActivity, size = DpSize(300.dp, 520.dp)) }
+                section("할 일 — 시제품 A (Glance)", -1, 540, rv)
+            } catch (e: Exception) {
+                sectionView("Glance 렌더 실패", -1, 100, TextView(this).apply { text = "${e.message}" })
+            }
+        }
+        // 시제품 B — 이미지 스냅샷 (Canvas → Bitmap)
+        if (which == "imagetodo") {
+            val wpx = resources.displayMetrics.widthPixels - dp(20)
+            val bmp = TodoImageRenderer.render(this, wpx, dp(540))
+            sectionView("할 일 — 시제품 B (이미지)", -1, 540, ImageView(this).apply {
+                setImageBitmap(bmp); scaleType = ImageView.ScaleType.FIT_XY
+            })
+        }
 
         setContentView(ScrollView(this).apply { addView(root) })
     }
