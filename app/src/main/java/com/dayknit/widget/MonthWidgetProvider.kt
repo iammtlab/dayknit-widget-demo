@@ -72,7 +72,13 @@ class MonthWidgetProvider : AppWidgetProvider() {
                 else -> R.layout.widget_calendar_normal
             }
             val views = RemoteViews(ctx.packageName, layoutRes)
-            views.setInt(R.id.widget_root, "setBackgroundColor", rootArgb)
+            // 둥근 위젯 배경 — 흰 라운드 드로어블 + 틴트(rootArgb: 색·투명도). 미만은 사각 색배경.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                views.setInt(R.id.widget_root, "setBackgroundResource", R.drawable.widget_bg_round)
+                views.setColorStateList(R.id.widget_root, "setBackgroundTintList", android.content.res.ColorStateList.valueOf(rootArgb))
+            } else {
+                views.setInt(R.id.widget_root, "setBackgroundColor", rootArgb)
+            }
             views.setInt(R.id.widget_header, "setBackgroundColor", header)
 
             val ym = WidgetConfig.currentYearMonth(ctx, id)
@@ -120,6 +126,14 @@ class MonthWidgetProvider : AppWidgetProvider() {
                 val c = cells[i]
                 val dId = res.getIdentifier("d$i", "id", pkg)
                 val cellId = res.getIdentifier("cell$i", "id", pkg)
+                // 오늘 셀 은은한 강조 — 테마색 저알파 둥근 배경(API31+)
+                if (c.isToday && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    views.setInt(cellId, "setBackgroundResource", R.drawable.today_cell_bg)
+                    views.setColorStateList(cellId, "setBackgroundTintList",
+                        android.content.res.ColorStateList.valueOf((0x26 shl 24) or (header and 0x00FFFFFF)))
+                } else {
+                    views.setInt(cellId, "setBackgroundColor", Color.TRANSPARENT)
+                }
                 views.setTextViewText(dId, c.day.toString())
                 views.setTextColor(dId, when {
                     c.isToday -> header
